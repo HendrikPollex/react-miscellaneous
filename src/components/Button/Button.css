@@ -1,0 +1,39 @@
+button.react-misc-button {
+    display: grid;
+    height: 40px;
+    border: 0.1rem solid;
+    border-radius: 10px;
+    padding: 5px 20px;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s ease;
+    transition-property: opacity;
+    font-size: 16px;
+}
+
+button.react-misc-button.primary {
+    color: var(--button-text-color);
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+button.react-misc-button.secondary {
+    color: var(--button-text-color);
+    background-color: var(--secondary);
+    border-color: var(--secondary);
+}
+
+button.react-misc-button.tertiary {
+    color: var(--button-text-color);
+    background-color: var(--tertiary);
+    border-color: var(--tertiary);
+}
+
+button.react-misc-button:focus {
+    opacity: 0.8;
+}
+
+button.react-misc-button:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}

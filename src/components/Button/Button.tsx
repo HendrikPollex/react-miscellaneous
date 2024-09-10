@@ -1,14 +1,16 @@
 import './Button.css';
 
-interface IButtonProps {
-    variant: "primary" | "secondary" | "danger" | "warning" | "success"
+interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+    variant: "primary" | "secondary" | "tertiary"
     label: string;
 }
 
-export default function Button({variant, label}: IButtonProps): JSX.Element {
+export default function Button({variant, label, ...htmlButtonProps}: IButtonProps): JSX.Element {
 
     return (
-        <button className={variant}>
+        <button 
+            {...htmlButtonProps}
+            className={"react-misc-button " + variant + " " + htmlButtonProps.className}>
             {label}
         </button>
     )
