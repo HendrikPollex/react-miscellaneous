@@ -1,17 +1,24 @@
+import { SvgIcon } from '@mui/material';
 import './Button.css';
+import { SvgIconComponent } from '@mui/icons-material';
 
 interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     variant: "primary" | "secondary" | "tertiary"
-    label: string;
+    label?: string;
+    imageLeft?: SvgIconComponent;
+    imageRight?: SvgIconComponent; 
 }
 
-export default function Button({variant, label, ...htmlButtonProps}: IButtonProps): JSX.Element {
+export default function Button({variant, label, imageLeft, imageRight, ...htmlButtonProps}: IButtonProps): JSX.Element {
 
     return (
-        <button 
+        <button
             {...htmlButtonProps}
-            className={"react-misc-button " + variant + " " + htmlButtonProps.className}>
-            {label}
+            className={"react-misc-button " + variant + " " + htmlButtonProps.className}
+        >
+            { imageLeft && <SvgIcon className="image-left" component={imageLeft} />}
+            { label && <span className="react-misc-button-label">{label}</span> }
+            { imageRight && <SvgIcon className="image-right" component={imageRight} />}
         </button>
     )
 }

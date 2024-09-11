@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Button from './Button';
+import { Add, Link } from '@mui/icons-material';
 
 const meta: Meta<typeof Button> = {
     component: Button,
@@ -9,23 +10,25 @@ export default meta;
 
 type ButtonStory = StoryObj<typeof Button>;
 
-export const Primary: ButtonStory = {
+export const Basic: ButtonStory = {
     args: {
         label: 'Button',
         variant: 'primary'
     },
 };
 
-export const Secondary: ButtonStory = {
+export const ImageButton: ButtonStory = {
     args: {
-        label: "Button",
-        variant: "secondary"
-    }
+        variant: 'primary',
+        imageLeft: Link
+    },
 };
 
-export const Tertiary: ButtonStory = {
+export const FullButton: ButtonStory = {
     args: {
-        label: "Button",
-        variant: "tertiary"
-    }
+        label: 'Button',
+        variant: 'primary',
+        imageLeft: Add,
+        imageRight: Link
+    },
 };
