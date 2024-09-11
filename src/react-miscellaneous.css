@@ -3,17 +3,19 @@ html *
    font-family: 'Lexend Deca' sans-serif !important;
    --primary: #038ffadb;
    --secondary: #7b7b7b;
-   --tertiary: #b7b7b7;
+   --tertiary: #efefef;
 }
 
 html.dark {
     --background-color: #222425;
     --foreground-color: #F6F9FC;
-    --button-text-color: #F6F9FC;
+    --text-color-primary: #F6F9FC;
+    --text-color-secondary: #222425;
 }
 
 html.light {
     --background-color: #F6F9FC;
     --foreground-color: #222425;
-    --button-text-color: #F6F9FC;
+    --text-color-primary: #F6F9FC;
+    --text-color-secondary: #222425;
 }

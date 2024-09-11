@@ -12,9 +12,9 @@ const preview: Preview = {
 			},
 		},
 		layout: 'centered',
-		tags: ['autodocs'],
 		docs: {
-			container: DocsContainer
+			container: DocsContainer,
+			toc: true,
 		},
 		darkMode: {
 			classTarget: "html",
@@ -26,7 +26,8 @@ const preview: Preview = {
 			light: { ...themes.normal, appPreviewBg: "#F6F9FC" },
 			lightClass: "light",
 		},
-	}
+	},
+	tags: ['autodocs']
 };
 
 export default preview;

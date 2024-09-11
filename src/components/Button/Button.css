@@ -1,39 +1,39 @@
 button.react-misc-button {
     display: grid;
     height: 40px;
-    border: 0.1rem solid;
+    border: 0.05rem solid;
     border-radius: 10px;
     padding: 5px 20px;
     align-items: center;
     justify-content: center;
     transition: 0.2s ease;
-    transition-property: opacity;
+    transition-property: all;
     font-size: 16px;
 }
 
 button.react-misc-button.primary {
-    color: var(--button-text-color);
+    color: var(--text-color-primary);
     background-color: var(--primary);
     border-color: var(--primary);
 }
 
 button.react-misc-button.secondary {
-    color: var(--button-text-color);
+    color: var(--text-color-primary);
     background-color: var(--secondary);
     border-color: var(--secondary);
 }
 
 button.react-misc-button.tertiary {
-    color: var(--button-text-color);
+    color: var(--text-color-secondary);
     background-color: var(--tertiary);
-    border-color: var(--tertiary);
-}
-
-button.react-misc-button:focus {
-    opacity: 0.8;
+    border-color: var(--text-color-secondary);
 }
 
 button.react-misc-button:hover {
-    opacity: 0.8;
+    transform: scale(1.03);
     cursor: pointer;
+}
+
+button.react-misc-button:active {
+    transform: scale(0.98);
 }
