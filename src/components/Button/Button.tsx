@@ -2,7 +2,7 @@ import { SvgIcon } from '@mui/material';
 import './Button.css';
 import { SvgIconComponent } from '@mui/icons-material';
 
-interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface IButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "variant"> {
     variant: "primary" | "secondary" | "tertiary"
     label?: string;
     imageLeft?: SvgIconComponent;

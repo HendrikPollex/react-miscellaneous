@@ -1,37 +1,50 @@
+import { FormEvent, PropsWithChildren } from "react";
 import { FormContextProvider, IFormContext, useFormContext } from "./FormContext";
 
-export interface IFormProps<T> {
+interface IBaseFormOpProps<T> {
     initialValues: T;
     onSubmit: (values: T) => void;
 }
 
-interface IFormChildren<T> {
-    children: (formProps: IFormContext<T>) => JSX.Element | JSX.Element[];
+interface IFormOpChildrenProps<T> {
+    children: (formProps: IFormContext<T>) => JSX.Element;
 }
 
-type IFormPropsWithChildren<T> = IFormProps<T> & IFormChildren<T>;
+export interface IFormOpProps<T> extends IBaseFormOpProps<T>, IFormOpChildrenProps<T> {}
 
-export default function Form<T extends object>({children, initialValues, onSubmit}: IFormPropsWithChildren<T>): JSX.Element {
+export default function FormOp<T extends object>({children, initialValues, onSubmit}: IFormOpProps<T>): JSX.Element {
 
     return (
         <FormContextProvider
             initialValues={initialValues}
-            onSubmit={onSubmit}
+            onSubmit={(values: T) => onSubmit(values)}
         >
-            <FormDetails
+            <FormOpChildren<T>
                 children={children}
             />
         </FormContextProvider>
     );
 }
 
-function FormDetails<T extends object>({children}: IFormChildren<T>): JSX.Element {
+function FormOpChildren<T extends object>({children}: IFormOpChildrenProps<T>): JSX.Element {
+    
+    const form = useFormContext();
+
+    return children(form);
+}
+
+export function Form({children}: PropsWithChildren): JSX.Element {
 
     const formContext = useFormContext();
 
     return (
-        <>
-            {children(formContext)}
-        </>
+        <form 
+            className={formContext.validated ? "validated" : ""}
+            onSubmit={(e: FormEvent<HTMLFormElement>) => formContext.submitValues(e)}
+            onReset={(e: FormEvent<HTMLFormElement>) => formContext.resetValues(e)}
+            noValidate
+        >
+            {children}
+        </form>
     );
 }

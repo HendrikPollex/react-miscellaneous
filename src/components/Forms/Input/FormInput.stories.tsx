@@ -3,7 +3,7 @@ import FormInput, { FormInputProps } from './FormInput';
 import Form from '../Form/Form';
 import { IFormContext } from '../Form/FormContext';
 
-function StoryRender<T extends string | number | boolean>(props: Omit<FormInputProps<T>, "value" | "onChange">): JSX.Element {    
+function StoryRender<T extends string | number>(props: Omit<FormInputProps<T>, "value" | "onChange">): JSX.Element {    
 
     return (
         <Form<{ value: string }>
@@ -32,8 +32,21 @@ type FormInputStory = StoryObj<typeof FormInput>;
 export const TextInput: FormInputStory = {
     args: {
         id: "text_input",
+        field: "text",
         label: "Label",
-        type: "text"
+        type: "text",
+        required: true
+    },
+    render: (props) => {
+        return <StoryRender {...props} />
+    }
+}
+
+export const NumberInput: FormInputStory = {
+    args: {
+        id: "number_input",
+        label: "Label",
+        type: "number",
     },
     render: (props) => {
         return <StoryRender {...props} />

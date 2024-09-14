@@ -4,6 +4,9 @@ html *
    --primary: #038ffadb;
    --secondary: #7b7b7b;
    --tertiary: #efefef;
+   --success: #00bc4bb7;
+   --warning: #ff9900d5;
+   --danger: #ff00009a;
 }
 
 html.dark {
@@ -20,4 +23,8 @@ html.light {
     --foreground-color: #222425;
     --text-color-primary: #F6F9FC;
     --text-color-secondary: #222425;
+}
+
+.mt-10 {
+    margin-top: 10px;
 }

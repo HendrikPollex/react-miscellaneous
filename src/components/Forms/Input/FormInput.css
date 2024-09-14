@@ -13,10 +13,13 @@ div.react-misc-input-wrapper {
 /* Label */
 div.react-misc-input-wrapper label.react-misc-input-label {
     color: var(--placeholder);
-    transition: .5s ease;
+    transition: .3s ease;
     transition-property: top, left, font-size;
     position: absolute;
-    height: 10px;
+}
+
+div.react-misc-input-wrapper:has(input[type="text"].react-misc-input) label.react-misc-input-label span.required-indicator {
+    color: var(--danger);
 }
 
 div.react-misc-input-wrapper:has(input[type="text"][value=""]) label.react-misc-input-label {
@@ -31,26 +34,37 @@ div.react-misc-input-wrapper:has(input[type="text"]:focus-visible, input[type="t
     font-size: small;
 }
 
-/* Input */
+/* Text Input */
 div.react-misc-input-wrapper input[type="text"].react-misc-input {
     position: absolute;
     padding: 0px 10px 5px 10px;
     top: 25px;
     left: 0px;
     height: 20px;
-    width: 100%;
+    width: calc(100% - 20px);
     border: none;
     background-color: transparent;
     color: var(--foreground-color);
     font-size: medium;
 }
 
-div.react-misc-input-wrapper input[type="text"].react-misc-input:focus-visible {
+div.react-misc-input-wrapper input[type="text"].react-misc-input:focus-visible  {
     outline: none;
 }
 
-div.react-misc-input-wrapper:has(input[type="text"].react-misc-input:focus-visible) {
+div.react-misc-input-wrapper:has(input[type="text"].react-misc-input:focus-visible:not(:valid, :invalid)) {
     border: 0.05rem solid var(--primary);
 }
 
 /* Validation */
+form.validated {
+
+    div.react-misc-input-wrapper:has(input:invalid) {
+        border: 0.05rem solid var(--danger);
+    }
+
+    div.react-misc-input-wrapper:has(input:valid) {
+        border: 0.05rem solid var(--success);
+    }
+    
+}
