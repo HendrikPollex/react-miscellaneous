@@ -1,6 +1,6 @@
 html *
 {
-   font-family: 'Lexend Deca' sans-serif !important;
+   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
    --primary: #038ffadb;
    --secondary: #7b7b7b;
    --tertiary: #efefef;
@@ -11,6 +11,8 @@ html.dark {
     --foreground-color: #F6F9FC;
     --text-color-primary: #F6F9FC;
     --text-color-secondary: #222425;
+    --content-background: #73828C;
+    --placeholder: #7b7b7b;
 }
 
 html.light {

@@ -14,7 +14,7 @@ export default function Button({variant, label, imageLeft, imageRight, ...htmlBu
     return (
         <button
             {...htmlButtonProps}
-            className={"react-misc-button " + variant + " " + htmlButtonProps.className}
+            className={"react-misc-button " + variant + " " + (htmlButtonProps.className ?? "")}
         >
             { imageLeft && <SvgIcon className="image-left" component={imageLeft} />}
             { label && <span className="react-misc-button-label">{label}</span> }
