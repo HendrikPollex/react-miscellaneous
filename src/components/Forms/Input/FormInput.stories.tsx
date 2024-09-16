@@ -31,7 +31,6 @@ type FormInputStory = StoryObj<typeof FormInput>;
 
 export const TextInput: FormInputStory = {
     args: {
-        id: "text_input",
         field: "text",
         label: "Label",
         type: "text",
@@ -44,7 +43,6 @@ export const TextInput: FormInputStory = {
 
 export const NumberInput: FormInputStory = {
     args: {
-        id: "number_input",
         label: "Label",
         type: "number",
     },

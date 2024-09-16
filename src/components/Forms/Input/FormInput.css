@@ -1,41 +1,47 @@
 /* Wrapper */
-div.react-misc-input-wrapper {
+div.react-misc-form-input-wrapper {
+    display: grid;
+    grid-template-rows: min-content min-content;
+}
+
+div.react-misc-form-input-wrapper div.react-misc-input-wrapper {
     height: 50px;
     width: 100%;
     min-width: 200px;
     position: relative;
     border: 0.05rem solid var(--secondary);
+    border-radius: 0.2rem;
     transition: 0.5s ease;
     transition-property: border;
     padding: 0px;
 }
 
 /* Label */
-div.react-misc-input-wrapper label.react-misc-input-label {
+div.react-misc-form-input-wrapper div.react-misc-input-wrapper label.react-misc-input-label {
     color: var(--placeholder);
     transition: .3s ease;
     transition-property: top, left, font-size;
     position: absolute;
 }
 
-div.react-misc-input-wrapper:has(input[type="text"].react-misc-input) label.react-misc-input-label span.required-indicator {
+div.react-misc-form-input-wrapper div.react-misc-input-wrapper:has(input[type="text"].react-misc-input) label.react-misc-input-label span.required-indicator {
     color: var(--danger);
 }
 
-div.react-misc-input-wrapper:has(input[type="text"][value=""]) label.react-misc-input-label {
+div.react-misc-form-input-wrapper div.react-misc-input-wrapper:has(input[type="text"][value=""]) label.react-misc-input-label {
     top: 15px;
     left: 10px;
     font-size: medium;
 }
 
-div.react-misc-input-wrapper:has(input[type="text"]:focus-visible, input[type="text"]:not([value=""])) label.react-misc-input-label {
+div.react-misc-form-input-wrapper div.react-misc-input-wrapper:has(input[type="text"]:focus-visible, input[type="text"]:not([value=""])) label.react-misc-input-label {
     top: 5px;
     left: 10px;
     font-size: small;
 }
 
 /* Text Input */
-div.react-misc-input-wrapper input[type="text"].react-misc-input {
+div.react-misc-form-input-wrapper div.react-misc-input-wrapper input[type="text"].react-misc-input {
     position: absolute;
     padding: 0px 10px 5px 10px;
     top: 25px;
@@ -48,23 +54,27 @@ div.react-misc-input-wrapper input[type="text"].react-misc-input {
     font-size: medium;
 }
 
-div.react-misc-input-wrapper input[type="text"].react-misc-input:focus-visible  {
+div.react-misc-form-input-wrapper div.react-misc-input-wrapper input[type="text"].react-misc-input:focus-visible  {
     outline: none;
 }
 
-div.react-misc-input-wrapper:has(input[type="text"].react-misc-input:focus-visible:not(:valid, :invalid)) {
+div.react-misc-form-input-wrapper div.react-misc-input-wrapper:has(input[type="text"].react-misc-input:focus-visible:not(:valid, :invalid)) {
     border: 0.05rem solid var(--primary);
 }
 
 /* Validation */
 form.validated {
 
-    div.react-misc-input-wrapper:has(input:invalid) {
+    div.react-misc-form-input-wrapper div.react-misc-input-wrapper:has(input:invalid) {
         border: 0.05rem solid var(--danger);
     }
 
-    div.react-misc-input-wrapper:has(input:valid) {
+    div.react-misc-form-input-wrapper div.react-misc-input-wrapper:has(input:valid) {
         border: 0.05rem solid var(--success);
+    }
+
+    div.react-misc-form-input-wrapper label.react-misc-input-error-message {
+        color: var(--danger);
     }
     
 }
