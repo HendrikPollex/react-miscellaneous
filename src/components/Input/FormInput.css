@@ -24,17 +24,23 @@ div.react-misc-form-input-wrapper div.react-misc-input-wrapper label.react-misc-
     position: absolute;
 }
 
-div.react-misc-form-input-wrapper div.react-misc-input-wrapper:has(input[type="text"].react-misc-input) label.react-misc-input-label span.required-indicator {
+div.react-misc-form-input-wrapper div.react-misc-input-wrapper:has(input.react-misc-input) label.react-misc-input-label span.required-indicator {
     color: var(--danger);
 }
 
-div.react-misc-form-input-wrapper div.react-misc-input-wrapper:has(input[type="text"][value=""]) label.react-misc-input-label {
+div.react-misc-form-input-wrapper div.react-misc-input-wrapper:has(input.react-misc-input[value=""]) label.react-misc-input-label {
     top: 15px;
     left: 10px;
     font-size: medium;
 }
 
-div.react-misc-form-input-wrapper div.react-misc-input-wrapper:has(input[type="text"]:focus-visible, input[type="text"]:not([value=""])) label.react-misc-input-label {
+div.react-misc-form-input-wrapper div.react-misc-input-wrapper:has(input.react-misc-input:focus-visible, input[type="text"]:not([value=""])) label.react-misc-input-label {
+    top: 5px;
+    left: 10px;
+    font-size: small;
+}
+
+div.react-misc-form-input-wrapper div.react-misc-input-wrapper:has(input.react-misc-input:focus-visible, input[type="number"]:not([value=""])) label.react-misc-input-label {
     top: 5px;
     left: 10px;
     font-size: small;
@@ -62,6 +68,34 @@ div.react-misc-form-input-wrapper div.react-misc-input-wrapper:has(input[type="t
     border: 0.05rem solid var(--primary);
 }
 
+/* Number Input */
+div.react-misc-form-input-wrapper div.react-misc-input-wrapper input[type="number"].react-misc-input {
+    position: absolute;
+    padding: 0px 10px 5px 10px;
+    top: 25px;
+    left: 0px;
+    height: 20px;
+    width: calc(100% - 20px);
+    border: none;
+    background-color: transparent;
+    color: var(--foreground-color);
+    font-size: medium;
+}
+
+div.react-misc-form-input-wrapper div.react-misc-input-wrapper input[type="number"].react-misc-input:focus-visible  {
+    outline: none;
+}
+
+div.react-misc-form-input-wrapper div.react-misc-input-wrapper:has(input[type="number"].react-misc-input:focus-visible:not(:valid, :invalid)) {
+    border: 0.05rem solid var(--primary);
+}
+
+div.react-misc-form-input-wrapper div.react-misc-input-wrapper input[type="number"]::-webkit-inner-spin-button, 
+div.react-misc-form-input-wrapper div.react-misc-input-wrapper input[type="number"]::-webkit-outer-spin-button { 
+    background-color: var(--background);
+    border: none;
+}
+
 /* Validation */
 form.validated {
 
@@ -76,5 +110,5 @@ form.validated {
     div.react-misc-form-input-wrapper label.react-misc-input-error-message {
         color: var(--danger);
     }
-    
+
 }

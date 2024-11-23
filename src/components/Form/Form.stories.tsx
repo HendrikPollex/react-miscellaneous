@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import FormOp, { Form } from './Form';
-import { IFormContext } from '../Form/FormContext';
+import { IFormContext } from './FormContext';
 import FormInput from '../Input/FormInput';
-import Button from '../../Button/Button';
+import Button from '../Button/Button';
 import * as Yup from "yup";
 
 interface FormTestType {

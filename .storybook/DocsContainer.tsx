@@ -9,11 +9,7 @@ const channel = addons.getChannel();
 
 export const DocsContainer = (props: PropsWithChildren<BaseContainerProps>) => {
 
-	const [isDark, setDark] = React.useState();
-
-	const onChangeHandler = () => {
-		channel.emit(UPDATE_DARK_MODE_EVENT_NAME);
-	};
+	const [isDark, setDark] = React.useState<boolean>();
 
 	React.useEffect(() => {
 		channel.on(DARK_MODE_EVENT_NAME, setDark);
