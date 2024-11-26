@@ -11,8 +11,8 @@ div.react-misc-form-input-wrapper div.react-misc-input-wrapper {
     position: relative;
     border: 0.05rem solid var(--secondary);
     border-radius: 0.2rem;
-    transition: 0.5s ease;
-    transition-property: border;
+    transition: 0.2s ease;
+    transition-property: all;
     padding: 0px;
 }
 
@@ -64,7 +64,7 @@ div.react-misc-form-input-wrapper div.react-misc-input-wrapper input[type="text"
     outline: none;
 }
 
-div.react-misc-form-input-wrapper div.react-misc-input-wrapper:has(input[type="text"].react-misc-input:focus-visible:not(:valid, :invalid)) {
+div.react-misc-form-input-wrapper div.react-misc-input-wrapper:has(input[type="text"].react-misc-input:focus-visible) {
     border: 0.05rem solid var(--primary);
 }
 
@@ -97,18 +97,26 @@ div.react-misc-form-input-wrapper div.react-misc-input-wrapper input[type="numbe
 }
 
 /* Validation */
-form.validated {
+div.react-misc-form-input-wrapper span.react-misc-input-error-message {
+    display: grid;
+    grid-template-columns: 20px auto;
+    padding: 2px;
+    align-items: end;
+    justify-content: end;
+}
 
-    div.react-misc-form-input-wrapper div.react-misc-input-wrapper:has(input:invalid) {
-        border: 0.05rem solid var(--danger);
-    }
+div.react-misc-form-input-wrapper span.react-misc-input-error-message > img {
+    height: 15px;
+    width: 15px;
+    filter: var(--danger-filter);
+}
 
-    div.react-misc-form-input-wrapper div.react-misc-input-wrapper:has(input:valid) {
-        border: 0.05rem solid var(--success);
-    }
+div.react-misc-form-input-wrapper span.react-misc-input-error-message > span {
+    color: var(--danger);
+    font-size: small;
+    width: 100%;
+}
 
-    div.react-misc-form-input-wrapper label.react-misc-input-error-message {
-        color: var(--danger);
-    }
-
+div.react-misc-form-input-wrapper:has(span.react-misc-input-error-message) div.react-misc-input-wrapper:has(input.react-misc-input:not(:focus-visible)) {
+    border: 0.05rem solid var(--danger);
 }

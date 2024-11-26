@@ -1,9 +1,8 @@
-import React, {PropsWithChildren, useState} from 'react';
-import {DocsContainer as BaseContainer, DocsContainerProps as BaseContainerProps} from '@storybook/blocks';
-import {themes} from '@storybook/theming';
-import {useDarkMode} from 'storybook-dark-mode';
+import React, {PropsWithChildren} from 'react';
+import { DocsContainer as BaseContainer, DocsContainerProps as BaseContainerProps } from '@storybook/blocks';
+import { themes } from '@storybook/theming';
 import { addons } from '@storybook/preview-api';
-import { DARK_MODE_EVENT_NAME, UPDATE_DARK_MODE_EVENT_NAME } from 'storybook-dark-mode';
+import { DARK_MODE_EVENT_NAME } from 'storybook-dark-mode';
 
 const channel = addons.getChannel();
 

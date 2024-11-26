@@ -1,24 +1,36 @@
 import type { StorybookConfig } from "@storybook/react-webpack5";
 
 const config: StorybookConfig = {
-	stories: ["../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
-	addons: [
-		"@storybook/preset-create-react-app",
-		"@storybook/addon-links",
-		"@storybook/addon-essentials",
-		"@chromatic-com/storybook",
-		"@storybook/addon-interactions",
-		"storybook-dark-mode",
-	],
-	framework: {
+    stories: ['../src/**/*.mdx', "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
+
+    addons: [
+        "@chromatic-com/storybook",
+        "@storybook/addon-essentials",
+        "@storybook/addon-interactions",
+        "@storybook/addon-links",
+        "@storybook/blocks",
+        "@storybook/preset-create-react-app",
+        "@storybook/react",
+        "@storybook/react-webpack5",
+        "@storybook/theming",
+        "storybook-dark-mode",
+    ],
+
+    framework: {
 		name: "@storybook/react-webpack5",
 		options: {
-			strictMode: true
-		},
+            strictMode: true
+        },
 	},
-	docs: {
-		defaultName: "Documentation"
-	},
-	staticDirs: ["../public"],
+
+    docs: {
+        defaultName: "Doc"
+    },
+
+    staticDirs: ["../public"],
+
+    typescript: {
+        reactDocgen: "react-docgen-typescript"
+    }
 };
 export default config;

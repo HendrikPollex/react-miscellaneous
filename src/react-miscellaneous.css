@@ -1,12 +1,18 @@
 html *
 {
    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
    --primary: #038ffadb;
    --secondary: #7b7b7b;
    --tertiary: #efefef;
-   --success: #00bc4bb7;
-   --warning: #ff9900d5;
-   --danger: #ff00009a;
+
+   --success: #00bc4b;
+   --warning: #ff9900;
+   --danger: #ff0000;
+
+   --success-filter: filter: brightness(0) saturate(100%) invert(71%) sepia(65%) saturate(6299%) hue-rotate(112deg) brightness(96%) contrast(103%);
+   --warning-filter: brightness(0) saturate(100%) invert(73%) sepia(63%) saturate(3972%) hue-rotate(359deg) brightness(99%) contrast(108%);
+   --danger-filter: brightness(0) saturate(100%) invert(19%) sepia(82%) saturate(4566%) hue-rotate(355deg) brightness(96%) contrast(132%);
 }
 
 html.dark {

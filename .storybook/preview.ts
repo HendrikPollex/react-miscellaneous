@@ -1,4 +1,4 @@
-import type { Preview } from "@storybook/react";
+import { Preview } from "@storybook/react";
 import { themes } from '@storybook/theming';
 import { DocsContainer } from "./DocsContainer";
 import "../src/react-miscellaneous.css";

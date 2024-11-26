@@ -1,5 +1,6 @@
-import { useFormContext } from "../Form/FormContext";
+import React, { RefObject, useRef } from "react";
 import "./FormInput.css";
+import { ErrorMessage } from "formik";
 
 export interface FormInputProps<T> extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "id" | "value" | "onChange" | "placeholder" | "required" | "type" | "name"> {
     field: string;
@@ -12,26 +13,17 @@ export interface FormInputProps<T> extends Omit<React.InputHTMLAttributes<HTMLIn
 
 export default function FormInput<T extends string | number>({field, value, onChange, label, required = false, ...inputProps}: FormInputProps<T>): JSX.Element {
 
-    const formContext = useFormContext();
+    const inputRef: RefObject<HTMLInputElement> = useRef<HTMLInputElement>(null);
 
     return (
-        <div className="react-misc-form-input-wrapper">
+        <div className="react-misc-form-input-wrapper" onClick={() => inputRef.current?.focus()}>
             <div className={"react-misc-input-wrapper " + (inputProps.className ?? "")}>
-                {formContext !== undefined && formContext.errors !== undefined && Object.entries(formContext.errors).find(e => e[0] === field)![1] != null ?
-                    <label 
-                        className="react-misc-input-label react-misc-input-error-message"
-                    >
-                        {label + " "}
-                        {Object.entries(formContext.errors).find(e => e[0] === field)![1]}
-                    </label>
-                :
-                    <label
-                        className="react-misc-input-label"
-                    >
-                        {label + " "}
-                        {required && <span className="required-indicator">{"*"}</span>}
-                    </label>
-                }
+                <label 
+                    className={"react-misc-input-label"}
+                >
+                    {label + " "}
+                    {required && <span className="required-indicator">{"*"}</span>}
+                </label>
                 <input
                     {...inputProps}
                     id={field}
@@ -41,9 +33,18 @@ export default function FormInput<T extends string | number>({field, value, onCh
                     onChange={(e) => onChange(e.target.value as T)}
                     required={required}
                     aria-required={required}
-                    
+                    ref={inputRef}
                 />
             </div>
+            <ErrorMessage 
+                name={field}
+                render={(message: string) => 
+                    <span className="react-misc-input-error-message">
+                        <img src="/images/exclamation.svg" alt="" />
+                        <span>{message}</span>
+                    </span>
+                }
+            />
         </div>
     )
 }

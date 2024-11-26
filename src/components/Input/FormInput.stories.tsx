@@ -1,23 +1,51 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import React from "react";
+import { Meta, StoryObj } from '@storybook/react';
 import FormInput, { FormInputProps } from './FormInput';
-import Form from '../Form/Form';
-import { IFormContext } from '../Form/FormContext';
+import { Form, Formik, FormikProps } from 'formik';
+import Button from "../Button/Button";
+import { mixed, object,  } from "yup";
 
 function StoryRender<T extends string | number>(props: Omit<FormInputProps<T>, "value" | "onChange">): JSX.Element {    
 
     return (
-        <Form<{ value: string }>
-            initialValues={{ value: "" }}
-            onSubmit={(values) => {}}
+        <Formik<{ value: T }>
+            initialValues={{ value: "" as T }}
+            onSubmit={() => { return }}
+            validationSchema={object().shape({
+                value: mixed().required()
+            })}
         >
-            {({ values, setFormValue }: IFormContext<{ value: string }>) => 
-                <FormInput
-                    {...props} 
-                    value={values.value as T}
-                    onChange={(v: T) => setFormValue("value", v)}
-                />
+            {({ values, setFieldValue }: FormikProps<{ value: T }>) => 
+                <Form noValidate>
+                    <FormInput
+                        {...props} 
+                        value={values.value as T}
+                        onChange={(v: T) => setFieldValue("value", v)}
+                    />
+                    <div 
+                        style={{
+                            display: "grid",
+                            gridTemplateColumns: "1fr 1fr",
+                            columnGap: "5px",
+                            padding: "5px"
+                        }}
+                    >
+                        <Button 
+                            type="submit"
+                            variant="primary"
+                        >
+                            Save
+                        </Button>
+                        <Button
+                            type="reset"
+                            variant="secondary"
+                        >
+                            Reset
+                        </Button>
+                    </div>
+                </Form>
             }
-        </Form>
+        </Formik>
     )
 }
 
@@ -31,22 +59,23 @@ type FormInputStory = StoryObj<typeof FormInput>;
 
 export const TextInput: FormInputStory = {
     args: {
-        field: "text",
-        label: "Label",
+        field: "value",
+        label: "Text",
         type: "text",
         required: true
     },
     render: (props) => {
-        return <StoryRender {...props} />
+        return <StoryRender<string> {...props} />
     }
 }
 
 export const NumberInput: FormInputStory = {
     args: {
-        label: "Label",
+        field: "value",
+        label: "Number",
         type: "number",
     },
     render: (props) => {
-        return <StoryRender {...props} />
+        return <StoryRender<number> {...props} />
     }
 }
