@@ -1,8 +1,8 @@
 import React from "react";
 import { Meta, StoryObj } from '@storybook/react';
-import FormInput, { FormInputProps } from './FormInput';
+import { FormInput, FormInputProps } from './FormInput';
 import { Form, Formik, FormikProps } from 'formik';
-import Button from "../Button/Button";
+import { Button } from "../Button/Button";
 import { mixed, object,  } from "yup";
 
 function StoryRender<T extends string | number>(props: Omit<FormInputProps<T>, "value" | "onChange">): JSX.Element {    

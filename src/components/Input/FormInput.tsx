@@ -1,6 +1,6 @@
-import React, { RefObject, useRef } from "react";
+import React, { createRef, RefObject } from "react";
 import "./FormInput.css";
-import { ErrorMessage } from "formik";
+import { ErrorMessage, Field } from "formik";
 
 export interface FormInputProps<T> extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "id" | "value" | "onChange" | "placeholder" | "required" | "type" | "name"> {
     field: string;
@@ -11,9 +11,9 @@ export interface FormInputProps<T> extends Omit<React.InputHTMLAttributes<HTMLIn
     required?: boolean;
 }
 
-export default function FormInput<T extends string | number>({field, value, onChange, label, required = false, ...inputProps}: FormInputProps<T>): JSX.Element {
+export function FormInput<T extends string | number>({field, value, onChange, label, required = false, ...inputProps}: FormInputProps<T>): JSX.Element {
 
-    const inputRef: RefObject<HTMLInputElement> = useRef<HTMLInputElement>(null);
+    const inputRef: RefObject<HTMLInputElement> = createRef<HTMLInputElement>();
 
     return (
         <div className="react-misc-form-input-wrapper" onClick={() => inputRef.current?.focus()}>
@@ -32,7 +32,6 @@ export default function FormInput<T extends string | number>({field, value, onCh
                     value={value as string | number}
                     onChange={(e) => onChange(e.target.value as T)}
                     required={required}
-                    aria-required={required}
                     ref={inputRef}
                 />
             </div>
@@ -40,7 +39,7 @@ export default function FormInput<T extends string | number>({field, value, onCh
                 name={field}
                 render={(message: string) => 
                     <span className="react-misc-input-error-message">
-                        <img src="/images/exclamation.svg" alt="" />
+                        <img src="./images/exclamation.svg" alt="" />
                         <span>{message}</span>
                     </span>
                 }

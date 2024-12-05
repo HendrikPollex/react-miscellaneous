@@ -5,7 +5,7 @@ export interface IButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButton
     variant: "primary" | "secondary" | "tertiary"
 }
 
-export default function Button({variant, children, ...htmlButtonProps}: IButtonProps): JSX.Element {
+export function Button({variant, children, ...htmlButtonProps}: IButtonProps): JSX.Element {
 
     return (
         <button
